@@ -17,9 +17,11 @@ class CVBuilder {
 
     private var data: Data?
     private let path: String
+    private let bundle: Bundle
 
-    init(path: String) {
+    init(path: String, bundle: Bundle = .module) {
         self.path = path
+        self.bundle = bundle
     }
 
     func build() throws {
@@ -49,7 +51,7 @@ class CVBuilder {
         let name = "Juan José Meneses"
         name.draw(at: CGPoint(x: 15, y: 10), withAttributes: TextAttributes.whiteBigTitle)
 
-        let title = "iOS Developer"
+        let title = NSLocalizedString("JOB_TITLE", bundle: bundle, comment: "Job title")
         title.draw(at: CGPoint(x: 15, y: 40),
                    withAttributes: TextAttributes.whiteSubTitle)
 

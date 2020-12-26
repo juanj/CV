@@ -10,6 +10,7 @@ let package = Package(
     targets: [
         .target(
             name: "CV",
-            dependencies: [])
+            dependencies: [],
+            resources: [.process("Resources")])
     ]
 )

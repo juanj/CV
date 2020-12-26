@@ -10,6 +10,8 @@
 		32D02AB22596B04400BB9E0D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02AB12596B04400BB9E0D /* main.swift */; };
 		32D02AC02596B26000BB9E0D /* CVBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02ABF2596B26000BB9E0D /* CVBuilder.swift */; };
 		32D02AC32596BBBC00BB9E0D /* CVBuilderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02AC22596BBBC00BB9E0D /* CVBuilderError.swift */; };
+		32D02ACB2596C72300BB9E0D /* NSColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02ACA2596C72300BB9E0D /* NSColor+CustomColors.swift */; };
+		32D02ACE2596CBC500BB9E0D /* TextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D02ACD2596CBC500BB9E0D /* TextAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,8 @@
 		32D02AB12596B04400BB9E0D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		32D02ABF2596B26000BB9E0D /* CVBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBuilder.swift; sourceTree = "<group>"; };
 		32D02AC22596BBBC00BB9E0D /* CVBuilderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVBuilderError.swift; sourceTree = "<group>"; };
+		32D02ACA2596C72300BB9E0D /* NSColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+CustomColors.swift"; sourceTree = "<group>"; };
+		32D02ACD2596CBC500BB9E0D /* TextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				32D02AB12596B04400BB9E0D /* main.swift */,
 				32D02ABF2596B26000BB9E0D /* CVBuilder.swift */,
 				32D02AC22596BBBC00BB9E0D /* CVBuilderError.swift */,
+				32D02ACA2596C72300BB9E0D /* NSColor+CustomColors.swift */,
+				32D02ACD2596CBC500BB9E0D /* TextAttributes.swift */,
 			);
 			path = CV;
 			sourceTree = "<group>";
@@ -148,6 +154,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				32D02AC02596B26000BB9E0D /* CVBuilder.swift in Sources */,
+				32D02ACE2596CBC500BB9E0D /* TextAttributes.swift in Sources */,
+				32D02ACB2596C72300BB9E0D /* NSColor+CustomColors.swift in Sources */,
 				32D02AC32596BBBC00BB9E0D /* CVBuilderError.swift in Sources */,
 				32D02AB22596B04400BB9E0D /* main.swift in Sources */,
 			);

@@ -26,10 +26,33 @@ class CVBuilder {
         let context = try setUpContext()
         context.beginPage(mediaBox: &a4Size)
 
-        // Draw CV
+        flipCoordinates(context)
+        drawHeader(context)
 
         context.endPage()
         context.closePDF()
+    }
+
+    func flipCoordinates(_ context: CGContext) {
+        // (0, 0) = Top left
+        context.translateBy(x: 0, y: a4Size.height)
+        context.scaleBy(x: 1, y: -1)
+    }
+
+    func drawHeader(_ context: CGContext) {
+        context.saveGState()
+
+        context.setFillColor(NSColor.darkGray.cgColor)
+        context.fill(CGRect(origin: .zero, size: CGSize(width: a4Size.width, height: 75)))
+
+        let name = "Juan José Meneses"
+        name.draw(at: CGPoint(x: 15, y: 10), withAttributes: TextAttributes.whiteBigTitle)
+
+        let title = "iOS Developer"
+        title.draw(at: CGPoint(x: 15, y: 40),
+                   withAttributes: TextAttributes.whiteSubTitle)
+
+        context.restoreGState()
     }
 
     private func setUpContext() throws -> CGContext {
@@ -41,7 +64,8 @@ class CVBuilder {
             throw CVBuilderError.contextCreationFail
         }
 
-        NSGraphicsContext.current = NSGraphicsContext(cgContext: context, flipped: false)
+        NSGraphicsContext.current = NSGraphicsContext(cgContext: context, flipped: true)
+
         return context
     }
 }

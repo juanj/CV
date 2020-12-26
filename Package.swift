@@ -7,10 +7,13 @@ let package = Package(
     name: "CV",
     defaultLocalization: "en",
     platforms: [.macOS(.v10_11)],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0")
+    ],
     targets: [
         .target(
             name: "CV",
-            dependencies: [],
+            dependencies: [.product(name: "ArgumentParser", package: "swift-argument-parser")],
             resources: [.process("Resources")])
     ]
 )

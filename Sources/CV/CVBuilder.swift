@@ -31,6 +31,7 @@ class CVBuilder {
         flipCoordinates(context)
         drawHeader(context)
         drawSidebar(context)
+        drawContent(context)
 
         context.endPage()
         context.closePDF()
@@ -65,6 +66,12 @@ class CVBuilder {
         context.fill(CGRect(x: a4Size.width * (2/3), y: 75, width: a4Size.width * (1/3), height: a4Size.height - 75))
 
         context.restoreGState()
+    }
+
+    private func drawContent(_ context: CGContext) {
+        let content = NSLocalizedString("ABOUT", bundle: bundle, comment: "About")
+
+        content.draw(in: CGRect(x: 0, y: 90, width: a4Size.width * (2/3), height: a4Size.height - 75), withAttributes: TextAttributes.content)
     }
 
     private func setUpContext() throws -> CGContext {

@@ -25,7 +25,7 @@ struct CV: ParsableCommand {
             bundle = langBundle
         }
 
-        let builder = CVBuilder(path: "./cv.pdf", bundle: bundle)
+        let builder = CVBuilder(path: out, bundle: bundle)
         do {
             try builder.build()
             print("Build")

@@ -25,3 +25,4 @@ FRAMEWORKS_LIBRARIES="Frameworks/Librerías";
 OTHER_TOOLS="Otros";
 UNITTESTS="Pruebas unitarias";
 CI="IC";
+AGE="Edad";

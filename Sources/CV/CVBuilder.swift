@@ -14,8 +14,8 @@ class CVBuilder {
         kCGPDFContextCreator: "https://github.com/juanj/CV"
     ]
     private var a4Size = CGRect(x: 0, y: 0, width: 8.3 * 72, height: 11.7 * 72)
-    private let subSectionsSpacing: CGFloat = 10
-    private let valueSpacing: CGFloat = 5
+    private let subSectionsSpacing: CGFloat = 9
+    private let valueSpacing: CGFloat = 4
 
     private var data: Data?
     private let path: String
@@ -103,6 +103,11 @@ class CVBuilder {
 
         let contactTitle = NSLocalizedString("CONTACT", bundle: bundle, comment: "Contact")
         lastHeight = drawSectionTitle(context, title: contactTitle)
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
+
+        let ageTitle = NSLocalizedString("AGE", bundle: bundle, comment: "Age")
+        lastHeight = drawSubSectionValue(context, name: ageTitle, value: "21")
         context.translateBy(x: 0, y: lastHeight)
         verticalPosition += lastHeight
 

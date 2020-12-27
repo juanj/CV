@@ -74,6 +74,10 @@ class CVBuilder {
         context.translateBy(x: 0, y: verticalPosition)
 
         verticalPosition = drawSkillsSubSection(context)
+        context.translateBy(x: 0, y: verticalPosition)
+
+        verticalPosition = drawLanguagesSubSection(context)
+        context.translateBy(x: 0, y: verticalPosition)
 
         context.restoreGState()
     }
@@ -161,6 +165,56 @@ class CVBuilder {
         context.setFillColor(NSColor.white.cgColor)
         context.fill(CGRect(x: 7, y: verticalPosition + 5, width: a4Size.width * (1/3) - 14, height: 1))
         verticalPosition += 6
+
+        context.restoreGState()
+        return verticalPosition
+    }
+
+    private func drawLanguagesSubSection(_ context: CGContext) -> CGFloat {
+        context.saveGState()
+        var verticalPosition: CGFloat = 0
+
+        let languagesTitle = NSLocalizedString("LANGUAGES", bundle: bundle, comment: "Languages")
+        let languagesTitleSize = languagesTitle.size(withAttributes: TextAttributes.sidebarTitle)
+        languagesTitle.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.sidebarTitle)
+        verticalPosition += 15 + languagesTitleSize.height
+
+        context.setFillColor(NSColor.white.cgColor)
+        context.fill(CGRect(x: 7, y: verticalPosition + 5, width: a4Size.width * (1/3) - 14, height: 1))
+        verticalPosition += 6
+
+        let spanishTitle = NSLocalizedString("SPANISH", bundle: bundle, comment: "Spanish")
+        let spanishTitleSize = spanishTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
+        spanishTitle.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        verticalPosition += spanishTitleSize.height + subSectionsSpacing
+        context.setFillColor(NSColor.purple.cgColor)
+        let spanishBarFill = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: a4Size.width * (1/3) - 30, height: 10), xRadius: 2.5, yRadius: 2.5)
+        spanishBarFill.fill()
+        verticalPosition += 10 + valueSpacing
+
+        let englishTitle = NSLocalizedString("ENGLISH", bundle: bundle, comment: "English")
+        let englishTitleSize = englishTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
+        englishTitle.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        verticalPosition += englishTitleSize.height + subSectionsSpacing
+        context.setFillColor(NSColor.lightGray.cgColor)
+        let englishBarPath = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: a4Size.width * (1/3) - 30, height: 10), xRadius: 2.5, yRadius: 2.5)
+        englishBarPath.fill()
+        context.setFillColor(NSColor.purple.cgColor)
+        let englishBarFill = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: (a4Size.width * (1/3) - 30) * (2/3), height: 10), xRadius: 2.5, yRadius: 2.5)
+        englishBarFill.fill()
+        verticalPosition += 10 + valueSpacing
+
+        let japaneseTitle = NSLocalizedString("JAPANESE", bundle: bundle, comment: "Japanese")
+        let japaneseTitleSize = japaneseTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
+        japaneseTitle.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        verticalPosition += japaneseTitleSize.height + subSectionsSpacing
+        context.setFillColor(NSColor.lightGray.cgColor)
+        let japaneseBarPath = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: a4Size.width * (1/3) - 30, height: 10), xRadius: 2.5, yRadius: 2.5)
+        japaneseBarPath.fill()
+        context.setFillColor(NSColor.purple.cgColor)
+        let japaneseBarFill = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: (a4Size.width * (1/3) - 30) * (1/4), height: 10), xRadius: 2.5, yRadius: 2.5)
+        japaneseBarFill.fill()
+        verticalPosition += 10 + valueSpacing
 
         context.restoreGState()
         return verticalPosition

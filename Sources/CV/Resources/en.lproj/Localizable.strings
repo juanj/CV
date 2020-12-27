@@ -16,3 +16,7 @@ PHONE="Phone";
 CITY="City";
 EMAIL="Email address";
 SKILLS="Skills";
+LANGUAGES="Languages";
+ENGLISH="English";
+SPANISH="Spanish";
+JAPANESE="Japanese";

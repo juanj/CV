@@ -38,4 +38,14 @@ struct TextAttributes {
 
         return style
     }()
+
+    static let sidebarTitle: [NSAttributedString.Key: Any] = [
+        .foregroundColor: NSColor.lightPurple,
+        .font: NSFont.systemFont(ofSize: 15, weight: .regular)
+    ]
+
+    static let sidebarSubTitle: [NSAttributedString.Key: Any] = [
+        .foregroundColor: NSColor.lightPurple,
+        .font: NSFont.systemFont(ofSize: 12, weight: .bold)
+    ]
 }

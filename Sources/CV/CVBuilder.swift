@@ -137,6 +137,39 @@ class CVBuilder {
         verticalPosition = drawSectionTitle(context, title: skillsTitle)
         context.translateBy(x: 0, y: verticalPosition)
 
+        let languages = NSLocalizedString("PROGRAMMING_LANGUAGES", bundle: bundle, comment: "Programming languages")
+        let languagesSize = languages.size(withAttributes: TextAttributes.sidebarSubTitle)
+        languages.draw(at: CGPoint(x: 15, y: subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        verticalPosition += languagesSize.height + subSectionsSpacing
+        context.translateBy(x: 0, y: languagesSize.height + subSectionsSpacing)
+
+        let image = Bundle.module.image(forResource: "swift")!
+        image.draw(in: NSRect(x: 15, y: valueSpacing, width: 15, height: 15))
+
+        let swift = "Swift"
+        let swiftSize = swift.size()
+        swift.draw(at: CGPoint(x: 35, y: valueSpacing))
+        verticalPosition += swiftSize.height + valueSpacing
+        context.translateBy(x: 0, y: swiftSize.height + valueSpacing)
+
+        let objectiveC = "Objective-C"
+        let objectiveCSize = swift.size()
+        objectiveC.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += objectiveCSize.height + valueSpacing
+        context.translateBy(x: 0, y: objectiveCSize.height + valueSpacing)
+
+        let javascript = "Javascript"
+        let javascriptSize = swift.size()
+        javascript.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += javascriptSize.height + valueSpacing
+        context.translateBy(x: 0, y: javascriptSize.height + valueSpacing)
+
+        let python = "Python"
+        let pythonSize = swift.size()
+        python.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += pythonSize.height + valueSpacing
+        context.translateBy(x: 0, y: pythonSize.height + valueSpacing)
+
         context.restoreGState()
         return verticalPosition
     }

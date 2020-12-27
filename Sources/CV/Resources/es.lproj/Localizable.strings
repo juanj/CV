@@ -21,3 +21,7 @@ ENGLISH="Inglés";
 SPANISH="Español";
 JAPANESE="Japonés";
 PROGRAMMING_LANGUAGES="Lenguajes de programación";
+FRAMEWORKS_LIBRARIES="Frameworks/Librerías";
+OTHER_TOOLS="Otros";
+UNITTESTS="Pruebas unitarias";
+CI="IC";

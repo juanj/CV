@@ -21,3 +21,7 @@ ENGLISH="English";
 SPANISH="Spanish";
 JAPANESE="Japanese";
 PROGRAMMING_LANGUAGES="Programming languages";
+FRAMEWORKS_LIBRARIES="Frameworks/Libraries";
+OTHER_TOOLS="Other";
+UNITTESTS="Unit Tests";
+CI="CI";

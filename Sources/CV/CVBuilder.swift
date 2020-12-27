@@ -170,6 +170,66 @@ class CVBuilder {
         verticalPosition += pythonSize.height + valueSpacing
         context.translateBy(x: 0, y: pythonSize.height + valueSpacing)
 
+        let frameworks = NSLocalizedString("FRAMEWORKS_LIBRARIES", bundle: bundle, comment: "Frameworks/Libraries")
+        let frameworksSize = frameworks.size(withAttributes: TextAttributes.sidebarSubTitle)
+        frameworks.draw(at: CGPoint(x: 15, y: subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        verticalPosition += frameworksSize.height + subSectionsSpacing
+        context.translateBy(x: 0, y: frameworksSize.height + subSectionsSpacing)
+
+        let uikit = "UIKit"
+        let uikitSize = swift.size()
+        uikit.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += uikitSize.height + valueSpacing
+        context.translateBy(x: 0, y: uikitSize.height + valueSpacing)
+
+        let swiftui = "SwiftUI"
+        let swiftuiSize = swift.size()
+        swiftui.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += swiftuiSize.height + valueSpacing
+        context.translateBy(x: 0, y: swiftuiSize.height + valueSpacing)
+
+        let coregraphics = "Core Graphics"
+        let coregraphicsSize = swift.size()
+        coregraphics.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += coregraphicsSize.height + valueSpacing
+        context.translateBy(x: 0, y: coregraphicsSize.height + valueSpacing)
+
+        let coredata = "Core Data"
+        let coredataSize = swift.size()
+        coredata.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += coredataSize.height + valueSpacing
+        context.translateBy(x: 0, y: coredataSize.height + valueSpacing)
+
+        let other = NSLocalizedString("OTHER_TOOLS", bundle: bundle, comment: "Other")
+        let otherSize = other.size(withAttributes: TextAttributes.sidebarSubTitle)
+        other.draw(at: CGPoint(x: 15, y: subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        verticalPosition += otherSize.height + subSectionsSpacing
+        context.translateBy(x: 0, y: otherSize.height + subSectionsSpacing)
+
+        let rest = "REST"
+        let restSize = rest.size()
+        rest.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += restSize.height + valueSpacing
+        context.translateBy(x: 0, y: restSize.height + valueSpacing)
+
+        let git = "Git"
+        let gitSize = git.size()
+        git.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += gitSize.height + valueSpacing
+        context.translateBy(x: 0, y: gitSize.height + valueSpacing)
+
+        let unitTests = NSLocalizedString("UNITTESTS", bundle: bundle, comment: "Unit tests")
+        let unitTestsSize = unitTests.size()
+        unitTests.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += unitTestsSize.height + valueSpacing
+        context.translateBy(x: 0, y: unitTestsSize.height + valueSpacing)
+
+        let ci = NSLocalizedString("CI", bundle: bundle, comment: "CI")
+        let ciSize = unitTests.size()
+        ci.draw(at: CGPoint(x: 15, y: valueSpacing))
+        verticalPosition += ciSize.height + valueSpacing
+        context.translateBy(x: 0, y: ciSize.height + valueSpacing)
+
         context.restoreGState()
         return verticalPosition
     }

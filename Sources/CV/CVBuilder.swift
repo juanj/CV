@@ -99,55 +99,31 @@ class CVBuilder {
     private func drawPersonalInfoSubSection(_ context: CGContext) -> CGFloat {
         context.saveGState()
         var verticalPosition: CGFloat = 0
+        var lastHeight: CGFloat = 0
 
         let contactTitle = NSLocalizedString("CONTACT", bundle: bundle, comment: "Contact")
-        let contactTitleSize = contactTitle.size(withAttributes: TextAttributes.sidebarTitle)
-        contactTitle.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.sidebarTitle)
-        verticalPosition += 15 + contactTitleSize.height
-
-        context.setFillColor(NSColor.white.cgColor)
-        context.fill(CGRect(x: 7, y: verticalPosition + 5, width: a4Size.width * (1/3) - 14, height: 1))
-        verticalPosition += 6
+        lastHeight = drawSectionTitle(context, title: contactTitle)
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
 
         let phoneTitle = NSLocalizedString("PHONE", bundle: bundle, comment: "Phone")
-        let phoneTitleSize = phoneTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
-        phoneTitle.draw(at: CGPoint(x: 15, y: verticalPosition + 4), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += phoneTitleSize.height + 4
-
-        let phoneNumber = "+57 000 000 0000"
-        let phoneNumberSize = phoneNumber.size()
-        phoneNumber.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing))
-        verticalPosition += phoneNumberSize.height + valueSpacing
+        lastHeight = drawSubSectionValue(context, name: phoneTitle, value: "+57 000 000 0000")
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
 
         let emailTitle = NSLocalizedString("EMAIL", bundle: bundle, comment: "Email")
-        let emailTitleSize = emailTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
-        emailTitle.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += emailTitleSize.height + subSectionsSpacing
-
-        let email = "myemailaddress@mail.com"
-        let emailSize = email.size()
-        email.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing))
-        verticalPosition += emailSize.height + valueSpacing
+        lastHeight = drawSubSectionValue(context, name: emailTitle, value: "myemailaddress@mail.com")
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
 
         let cityTitle = NSLocalizedString("CITY", bundle: bundle, comment: "City")
-        let cityTileSize = cityTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
-        cityTitle.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += cityTileSize.height + subSectionsSpacing
+        lastHeight = drawSubSectionValue(context, name: cityTitle, value: "Bogotá, Colombia")
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
 
-        let city = "Bogotá, Colombia"
-        let citySize = city.size()
-        city.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing))
-        verticalPosition += citySize.height + valueSpacing
-
-        let githubTitle = "GitHub"
-        let githubTitleSize = githubTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
-        githubTitle.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += githubTitleSize.height + subSectionsSpacing
-
-        let github = "https://github.com/juanj"
-        let githubSize = city.size()
-        github.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing))
-        verticalPosition += githubSize.height + valueSpacing
+        lastHeight = drawSubSectionValue(context, name: "GitHub", value: "https://github.com/juanj")
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
 
         context.restoreGState()
         return verticalPosition
@@ -158,13 +134,8 @@ class CVBuilder {
         var verticalPosition: CGFloat = 0
 
         let skillsTitle = NSLocalizedString("SKILLS", bundle: bundle, comment: "Contact")
-        let skillsTitleSize = skillsTitle.size(withAttributes: TextAttributes.sidebarTitle)
-        skillsTitle.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.sidebarTitle)
-        verticalPosition += 15 + skillsTitleSize.height
-
-        context.setFillColor(NSColor.white.cgColor)
-        context.fill(CGRect(x: 7, y: verticalPosition + 5, width: a4Size.width * (1/3) - 14, height: 1))
-        verticalPosition += 6
+        verticalPosition = drawSectionTitle(context, title: skillsTitle)
+        context.translateBy(x: 0, y: verticalPosition)
 
         context.restoreGState()
         return verticalPosition
@@ -175,46 +146,71 @@ class CVBuilder {
         var verticalPosition: CGFloat = 0
 
         let languagesTitle = NSLocalizedString("LANGUAGES", bundle: bundle, comment: "Languages")
-        let languagesTitleSize = languagesTitle.size(withAttributes: TextAttributes.sidebarTitle)
-        languagesTitle.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.sidebarTitle)
-        verticalPosition += 15 + languagesTitleSize.height
+        verticalPosition = drawSectionTitle(context, title: languagesTitle)
+        context.translateBy(x: 0, y: verticalPosition)
+
+        let spanishTitle = NSLocalizedString("SPANISH", bundle: bundle, comment: "Spanish")
+        verticalPosition = drawLanguageBar(context, language: spanishTitle, progress: 1)
+        context.translateBy(x: 0, y: verticalPosition)
+
+        let englishTitle = NSLocalizedString("ENGLISH", bundle: bundle, comment: "English")
+        verticalPosition = drawLanguageBar(context, language: englishTitle, progress: 2/3)
+        context.translateBy(x: 0, y: verticalPosition)
+
+        let japaneseTitle = NSLocalizedString("JAPANESE", bundle: bundle, comment: "Japanese")
+        verticalPosition = drawLanguageBar(context, language: japaneseTitle, progress: 1/4)
+        context.translateBy(x: 0, y: verticalPosition)
+
+        context.restoreGState()
+        return verticalPosition
+    }
+
+    private func drawSectionTitle(_ context: CGContext, title: String) -> CGFloat {
+        context.saveGState()
+        var verticalPosition: CGFloat = 0
+
+        let titleSize = title.size(withAttributes: TextAttributes.sidebarTitle)
+        title.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.sidebarTitle)
+        verticalPosition += 15 + titleSize.height
 
         context.setFillColor(NSColor.white.cgColor)
         context.fill(CGRect(x: 7, y: verticalPosition + 5, width: a4Size.width * (1/3) - 14, height: 1))
         verticalPosition += 6
 
-        let spanishTitle = NSLocalizedString("SPANISH", bundle: bundle, comment: "Spanish")
-        let spanishTitleSize = spanishTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
-        spanishTitle.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += spanishTitleSize.height + subSectionsSpacing
+        context.restoreGState()
+        return verticalPosition
+    }
+
+    private func drawLanguageBar(_ context: CGContext, language: String, progress: CGFloat) -> CGFloat {
+        context.saveGState()
+        var verticalPosition: CGFloat = 0
+
+        let languageSize = language.size(withAttributes: TextAttributes.sidebarSubTitle)
+        language.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        verticalPosition += languageSize.height + subSectionsSpacing
+        context.setFillColor(NSColor.lightGray.cgColor)
+        let languageBarPath = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: a4Size.width * (1/3) - 30, height: 10), xRadius: 2.5, yRadius: 2.5)
+        languageBarPath.fill()
         context.setFillColor(NSColor.purple.cgColor)
-        let spanishBarFill = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: a4Size.width * (1/3) - 30, height: 10), xRadius: 2.5, yRadius: 2.5)
-        spanishBarFill.fill()
+        let languageFillPath = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: (a4Size.width * (1/3) - 30) * progress, height: 10), xRadius: 2.5, yRadius: 2.5)
+        languageFillPath.fill()
         verticalPosition += 10 + valueSpacing
 
-        let englishTitle = NSLocalizedString("ENGLISH", bundle: bundle, comment: "English")
-        let englishTitleSize = englishTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
-        englishTitle.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += englishTitleSize.height + subSectionsSpacing
-        context.setFillColor(NSColor.lightGray.cgColor)
-        let englishBarPath = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: a4Size.width * (1/3) - 30, height: 10), xRadius: 2.5, yRadius: 2.5)
-        englishBarPath.fill()
-        context.setFillColor(NSColor.purple.cgColor)
-        let englishBarFill = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: (a4Size.width * (1/3) - 30) * (2/3), height: 10), xRadius: 2.5, yRadius: 2.5)
-        englishBarFill.fill()
-        verticalPosition += 10 + valueSpacing
+        context.restoreGState()
+        return verticalPosition
+    }
 
-        let japaneseTitle = NSLocalizedString("JAPANESE", bundle: bundle, comment: "Japanese")
-        let japaneseTitleSize = japaneseTitle.size(withAttributes: TextAttributes.sidebarSubTitle)
-        japaneseTitle.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += japaneseTitleSize.height + subSectionsSpacing
-        context.setFillColor(NSColor.lightGray.cgColor)
-        let japaneseBarPath = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: a4Size.width * (1/3) - 30, height: 10), xRadius: 2.5, yRadius: 2.5)
-        japaneseBarPath.fill()
-        context.setFillColor(NSColor.purple.cgColor)
-        let japaneseBarFill = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: (a4Size.width * (1/3) - 30) * (1/4), height: 10), xRadius: 2.5, yRadius: 2.5)
-        japaneseBarFill.fill()
-        verticalPosition += 10 + valueSpacing
+    private func drawSubSectionValue(_ context: CGContext, name: String, value: String) -> CGFloat {
+        context.saveGState()
+        var verticalPosition: CGFloat = 0
+
+        let nameSize = name.size(withAttributes: TextAttributes.sidebarSubTitle)
+        name.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        verticalPosition += nameSize.height + subSectionsSpacing
+
+        let valueSize = value.size()
+        value.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing))
+        verticalPosition += valueSize.height + valueSpacing
 
         context.restoreGState()
         return verticalPosition

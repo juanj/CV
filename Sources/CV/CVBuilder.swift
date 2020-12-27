@@ -14,6 +14,8 @@ class CVBuilder {
         kCGPDFContextCreator: "https://github.com/juanj/CV"
     ]
     private var a4Size = CGRect(x: 0, y: 0, width: 8.3 * 72, height: 11.7 * 72)
+    private let subSectionsSpacing: CGFloat = 10
+    private let valueSpacing: CGFloat = 5
 
     private var data: Data?
     private let path: String
@@ -69,6 +71,9 @@ class CVBuilder {
         context.translateBy(x: a4Size.width * (2/3), y: 75)
 
         var verticalPosition = drawPersonalInfoSubSection(context)
+        context.translateBy(x: 0, y: verticalPosition)
+
+        verticalPosition = drawSkillsSubSection(context)
 
         context.restoreGState()
     }
@@ -88,9 +93,8 @@ class CVBuilder {
     }
 
     private func drawPersonalInfoSubSection(_ context: CGContext) -> CGFloat {
-        let subSectionsSpacing: CGFloat = 10
-        let valueSpacing: CGFloat = 5
-        var verticalPosition: CGFloat = 0 // Used to acumulate current vertical position
+        context.saveGState()
+        var verticalPosition: CGFloat = 0
 
         let contactTitle = NSLocalizedString("CONTACT", bundle: bundle, comment: "Contact")
         let contactTitleSize = contactTitle.size(withAttributes: TextAttributes.sidebarTitle)
@@ -141,6 +145,24 @@ class CVBuilder {
         github.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing))
         verticalPosition += githubSize.height + valueSpacing
 
+        context.restoreGState()
+        return verticalPosition
+    }
+
+    private func drawSkillsSubSection(_ context: CGContext) -> CGFloat {
+        context.saveGState()
+        var verticalPosition: CGFloat = 0
+
+        let skillsTitle = NSLocalizedString("SKILLS", bundle: bundle, comment: "Contact")
+        let skillsTitleSize = skillsTitle.size(withAttributes: TextAttributes.sidebarTitle)
+        skillsTitle.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.sidebarTitle)
+        verticalPosition += 15 + skillsTitleSize.height
+
+        context.setFillColor(NSColor.white.cgColor)
+        context.fill(CGRect(x: 7, y: verticalPosition + 5, width: a4Size.width * (1/3) - 14, height: 1))
+        verticalPosition += 6
+
+        context.restoreGState()
         return verticalPosition
     }
 

@@ -41,11 +41,11 @@ struct TextAttributes {
 
     static let sidebarTitle: [NSAttributedString.Key: Any] = [
         .foregroundColor: NSColor.lightPurple,
-        .font: NSFont.systemFont(ofSize: 15, weight: .regular)
+        .font: NSFont.systemFont(ofSize: 15, weight: .bold)
     ]
 
     static let sidebarSubTitle: [NSAttributedString.Key: Any] = [
         .foregroundColor: NSColor.lightPurple,
-        .font: NSFont.systemFont(ofSize: 12, weight: .bold)
+        .font: NSFont.systemFont(ofSize: 11, weight: .bold)
     ]
 }

@@ -26,3 +26,5 @@ OTHER_TOOLS="Otros";
 UNITTESTS="Pruebas unitarias";
 CI="IC";
 AGE="Edad";
+EDUCATION="Estudios";
+EDUCATION_DATE="2013 - Precente";

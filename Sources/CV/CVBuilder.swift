@@ -85,13 +85,32 @@ class CVBuilder {
     private func drawContent(_ context: CGContext) {
         context.saveGState()
 
-        let title = NSLocalizedString("ABOUT_ME", bundle: bundle, comment: "About me")
-        let content = NSLocalizedString("ABOUT", bundle: bundle, comment: "About content")
-
         // Set origin to top left corner of content section
         context.translateBy(x: 0, y: 75)
+
+        let title = NSLocalizedString("ABOUT_ME", bundle: bundle, comment: "About me")
+        let titleSize = title.size(withAttributes: TextAttributes.sectionTitle)
         title.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.sectionTitle)
-        content.draw(in: CGRect(x: 0, y: 40, width: a4Size.width * (2/3), height: a4Size.height - 75), withAttributes: TextAttributes.content)
+        context.translateBy(x: 0, y: titleSize.height + 15)
+
+        context.setFillColor(NSColor.darkGray.cgColor)
+        context.fill(CGRect(x: 15, y: 0, width: titleSize.width, height: 0.5))
+
+        let content = NSLocalizedString("ABOUT", bundle: bundle, comment: "About content")
+        let contentSize = content.boundingRect(with: CGSize(width: a4Size.width * (2/3), height: .greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: TextAttributes.content)
+        content.draw(in: CGRect(x: 0, y: 5, width: a4Size.width * (2/3), height: a4Size.height - 75), withAttributes: TextAttributes.content)
+        context.translateBy(x: 0, y: contentSize.height + 5)
+
+        let education = NSLocalizedString("EDUCATION", bundle: bundle, comment: "Education")
+        let educationSize = education.size(withAttributes: TextAttributes.sectionTitle)
+        education.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.sectionTitle)
+        context.translateBy(x: 0, y: educationSize.height + 15)
+
+        context.setFillColor(NSColor.darkGray.cgColor)
+        context.fill(CGRect(x: 15, y: 0, width: educationSize.width, height: 0.5))
+
+        let educationDate = NSLocalizedString("EDUCATION_DATE", bundle: bundle, comment: "Education date")
+        educationDate.draw(at: CGPoint(x: 15, y: 5), withAttributes: TextAttributes.educationDate)
 
         context.restoreGState()
     }

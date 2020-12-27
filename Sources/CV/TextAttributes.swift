@@ -39,6 +39,10 @@ struct TextAttributes {
         return style
     }()
 
+    static let educationDate: [NSAttributedString.Key: Any] = [
+        .font: NSFont.systemFont(ofSize: 12, weight: .bold)
+    ]
+
     static let sidebarTitle: [NSAttributedString.Key: Any] = [
         .foregroundColor: NSColor.lightPurple,
         .font: NSFont.systemFont(ofSize: 15, weight: .bold)

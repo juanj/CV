@@ -69,9 +69,11 @@ class CVBuilder {
     }
 
     private func drawContent(_ context: CGContext) {
-        let content = NSLocalizedString("ABOUT", bundle: bundle, comment: "About")
+        let title = NSLocalizedString("ABOUT_ME", bundle: bundle, comment: "About me")
+        let content = NSLocalizedString("ABOUT", bundle: bundle, comment: "About content")
 
-        content.draw(in: CGRect(x: 0, y: 90, width: a4Size.width * (2/3), height: a4Size.height - 75), withAttributes: TextAttributes.content)
+        title.draw(at: CGPoint(x: 15, y: 90), withAttributes: TextAttributes.sectionTitle)
+        content.draw(in: CGRect(x: 0, y: 115, width: a4Size.width * (2/3), height: a4Size.height - 75), withAttributes: TextAttributes.content)
     }
 
     private func setUpContext() throws -> CGContext {

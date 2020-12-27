@@ -18,6 +18,11 @@ struct TextAttributes {
         .font: NSFont.systemFont(ofSize: 15, weight: .thin)
     ]
 
+    static let sectionTitle: [NSAttributedString.Key: Any] = [
+        .foregroundColor: NSColor.darkGray,
+        .font: NSFont.systemFont(ofSize: 15, weight: .semibold)
+    ]
+
     static let content: [NSAttributedString.Key: Any] = [
         .foregroundColor: NSColor.darkGray,
         .font: NSFont.systemFont(ofSize: 12, weight: .regular),

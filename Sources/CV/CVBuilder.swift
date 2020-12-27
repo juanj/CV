@@ -137,103 +137,27 @@ class CVBuilder {
     private func drawSkillsSubSection(_ context: CGContext) -> CGFloat {
         context.saveGState()
         var verticalPosition: CGFloat = 0
+        var lastHeight: CGFloat = 0
 
         let skillsTitle = NSLocalizedString("SKILLS", bundle: bundle, comment: "Contact")
-        verticalPosition = drawSectionTitle(context, title: skillsTitle)
-        context.translateBy(x: 0, y: verticalPosition)
+        lastHeight = drawSectionTitle(context, title: skillsTitle)
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
 
         let languages = NSLocalizedString("PROGRAMMING_LANGUAGES", bundle: bundle, comment: "Programming languages")
-        let languagesSize = languages.size(withAttributes: TextAttributes.sidebarSubTitle)
-        languages.draw(at: CGPoint(x: 15, y: subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += languagesSize.height + subSectionsSpacing
-        context.translateBy(x: 0, y: languagesSize.height + subSectionsSpacing)
-
-        let image = Bundle.module.image(forResource: "swift")!
-        image.draw(in: NSRect(x: 15, y: valueSpacing, width: 15, height: 15))
-
-        let swift = "Swift"
-        let swiftSize = swift.size()
-        swift.draw(at: CGPoint(x: 35, y: valueSpacing))
-        verticalPosition += swiftSize.height + valueSpacing
-        context.translateBy(x: 0, y: swiftSize.height + valueSpacing)
-
-        let objectiveC = "Objective-C"
-        let objectiveCSize = swift.size()
-        objectiveC.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += objectiveCSize.height + valueSpacing
-        context.translateBy(x: 0, y: objectiveCSize.height + valueSpacing)
-
-        let javascript = "Javascript"
-        let javascriptSize = swift.size()
-        javascript.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += javascriptSize.height + valueSpacing
-        context.translateBy(x: 0, y: javascriptSize.height + valueSpacing)
-
-        let python = "Python"
-        let pythonSize = swift.size()
-        python.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += pythonSize.height + valueSpacing
-        context.translateBy(x: 0, y: pythonSize.height + valueSpacing)
+        lastHeight = drawSubSectionList(context, name: languages, values: ["Swift", "Objective-C", "Javascript", "Python"])
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
 
         let frameworks = NSLocalizedString("FRAMEWORKS_LIBRARIES", bundle: bundle, comment: "Frameworks/Libraries")
-        let frameworksSize = frameworks.size(withAttributes: TextAttributes.sidebarSubTitle)
-        frameworks.draw(at: CGPoint(x: 15, y: subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += frameworksSize.height + subSectionsSpacing
-        context.translateBy(x: 0, y: frameworksSize.height + subSectionsSpacing)
-
-        let uikit = "UIKit"
-        let uikitSize = swift.size()
-        uikit.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += uikitSize.height + valueSpacing
-        context.translateBy(x: 0, y: uikitSize.height + valueSpacing)
-
-        let swiftui = "SwiftUI"
-        let swiftuiSize = swift.size()
-        swiftui.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += swiftuiSize.height + valueSpacing
-        context.translateBy(x: 0, y: swiftuiSize.height + valueSpacing)
-
-        let coregraphics = "Core Graphics"
-        let coregraphicsSize = swift.size()
-        coregraphics.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += coregraphicsSize.height + valueSpacing
-        context.translateBy(x: 0, y: coregraphicsSize.height + valueSpacing)
-
-        let coredata = "Core Data"
-        let coredataSize = swift.size()
-        coredata.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += coredataSize.height + valueSpacing
-        context.translateBy(x: 0, y: coredataSize.height + valueSpacing)
+        lastHeight = drawSubSectionList(context, name: frameworks, values: ["UIKit", "SwiftUI", "Core Graphics", "Core Data"])
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
 
         let other = NSLocalizedString("OTHER_TOOLS", bundle: bundle, comment: "Other")
-        let otherSize = other.size(withAttributes: TextAttributes.sidebarSubTitle)
-        other.draw(at: CGPoint(x: 15, y: subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
-        verticalPosition += otherSize.height + subSectionsSpacing
-        context.translateBy(x: 0, y: otherSize.height + subSectionsSpacing)
-
-        let rest = "REST"
-        let restSize = rest.size()
-        rest.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += restSize.height + valueSpacing
-        context.translateBy(x: 0, y: restSize.height + valueSpacing)
-
-        let git = "Git"
-        let gitSize = git.size()
-        git.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += gitSize.height + valueSpacing
-        context.translateBy(x: 0, y: gitSize.height + valueSpacing)
-
-        let unitTests = NSLocalizedString("UNITTESTS", bundle: bundle, comment: "Unit tests")
-        let unitTestsSize = unitTests.size()
-        unitTests.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += unitTestsSize.height + valueSpacing
-        context.translateBy(x: 0, y: unitTestsSize.height + valueSpacing)
-
-        let ci = NSLocalizedString("CI", bundle: bundle, comment: "CI")
-        let ciSize = unitTests.size()
-        ci.draw(at: CGPoint(x: 15, y: valueSpacing))
-        verticalPosition += ciSize.height + valueSpacing
-        context.translateBy(x: 0, y: ciSize.height + valueSpacing)
+        lastHeight = drawSubSectionList(context, name: other, values: ["REST", "Git", NSLocalizedString("UNITTESTS", bundle: bundle, comment: "Unit tests"), NSLocalizedString("CI", bundle: bundle, comment: "CI")])
+        context.translateBy(x: 0, y: lastHeight)
+        verticalPosition += lastHeight
 
         context.restoreGState()
         return verticalPosition
@@ -309,6 +233,27 @@ class CVBuilder {
         let valueSize = value.size()
         value.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing))
         verticalPosition += valueSize.height + valueSpacing
+
+        context.restoreGState()
+        return verticalPosition
+    }
+
+    private func drawSubSectionList(_ context: CGContext, name: String, values: [String]) -> CGFloat {
+        context.saveGState()
+        var verticalPosition: CGFloat = 0
+
+        let nameSize = name.size(withAttributes: TextAttributes.sidebarSubTitle)
+        name.draw(at: CGPoint(x: 15, y: subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        verticalPosition += nameSize.height + subSectionsSpacing
+        context.translateBy(x: 0, y: nameSize.height + subSectionsSpacing)
+
+        for value in values {
+            let valueSize = value.size()
+            value.draw(at: CGPoint(x: 15, y: valueSpacing))
+            verticalPosition += valueSize.height + valueSpacing
+            context.translateBy(x: 0, y: valueSize.height + valueSpacing)
+        }
+        verticalPosition -= valueSpacing
 
         context.restoreGState()
         return verticalPosition

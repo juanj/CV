@@ -40,6 +40,10 @@ struct TextAttributes {
     }()
 
     static let educationDate: [NSAttributedString.Key: Any] = [
+        .font: NSFont.systemFont(ofSize: 10, weight: .semibold)
+    ]
+
+    static let educationName: [NSAttributedString.Key: Any] = [
         .font: NSFont.systemFont(ofSize: 12, weight: .bold)
     ]
 

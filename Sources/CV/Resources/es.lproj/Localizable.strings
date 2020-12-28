@@ -28,3 +28,7 @@ CI="IC";
 AGE="Edad";
 EDUCATION="Estudios";
 EDUCATION_DATE="2013 - Precente";
+EDUCATION_NAME="Programador autodidacta";
+EDUCATION_DESCRIPTION="Ser autodidacta es una parte esencial de mí. Desde el momento que descubrí la programación he estado aprendiendo cosas constantemente. Ya sea cómo hacer una página web, cómo usar la línea de comandos, explorar nuevos lenguajes de programación o aprender sobre patrones y tests unitarios.
+Siempre estoy aprendiendo algo nuevo.";
+NOTE="(Por cierto, esta hoja de vida esta hecha 100% usando Swift y Core Graphics, el codigo se encuentra en https://github.com/juanj/CV)";

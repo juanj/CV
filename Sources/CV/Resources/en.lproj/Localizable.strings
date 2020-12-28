@@ -27,4 +27,8 @@ UNITTESTS="Unit Tests";
 CI="CI";
 AGE="Age";
 EDUCATION="Education";
-EDUCATION_DATE="Se2013 - Present";
+EDUCATION_DATE="2013 - Present";
+EDUCATION_NAME="Self taught programmer";
+EDUCATION_DESCRIPTION="Self learning is an essential part of me. From the moment I discovered programming I have been constantly learning new things. Be it how to build a website, how to use the command line, exploring new programming languages or learning about programming patters and unit testing.
+I'm always learning something new.";
+NOTE="(By tha way, this CV is 100% made using Swift and Core Graphcis, the code can be found at https://github.com/juanj/CV)";

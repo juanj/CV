@@ -101,16 +101,31 @@ class CVBuilder {
         content.draw(in: CGRect(x: 0, y: 5, width: a4Size.width * (2/3), height: a4Size.height - 75), withAttributes: TextAttributes.content)
         context.translateBy(x: 0, y: contentSize.height + 5)
 
+        context.translateBy(x: 0, y: 30)
         let education = NSLocalizedString("EDUCATION", bundle: bundle, comment: "Education")
         let educationSize = education.size(withAttributes: TextAttributes.sectionTitle)
-        education.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.sectionTitle)
-        context.translateBy(x: 0, y: educationSize.height + 15)
+        education.draw(at: CGPoint(x: 15, y: 0), withAttributes: TextAttributes.sectionTitle)
+        context.translateBy(x: 0, y: educationSize.height)
 
         context.setFillColor(NSColor.darkGray.cgColor)
         context.fill(CGRect(x: 15, y: 0, width: educationSize.width, height: 0.5))
 
         let educationDate = NSLocalizedString("EDUCATION_DATE", bundle: bundle, comment: "Education date")
-        educationDate.draw(at: CGPoint(x: 15, y: 5), withAttributes: TextAttributes.educationDate)
+        let educationDateSize = educationDate.size(withAttributes: TextAttributes.educationDate)
+        educationDate.draw(at: CGPoint(x: 15, y: 7), withAttributes: TextAttributes.educationDate)
+
+        let educationName = NSLocalizedString("EDUCATION_NAME", bundle: bundle, comment: "Education description")
+        let educationNameSize = educationName.size(withAttributes: TextAttributes.educationName)
+        educationName.draw(at: CGPoint(x: educationDateSize.width + 20, y: 5), withAttributes: TextAttributes.educationName)
+        context.translateBy(x: 0, y: educationNameSize.height)
+
+        let educationDescription = NSLocalizedString("EDUCATION_DESCRIPTION", bundle: bundle, comment: "Education description")
+        let educationDescriptionSize = educationDescription.boundingRect(with: CGSize(width: a4Size.width * (2/3) - educationDateSize.width - 20, height: .greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: TextAttributes.content)
+        educationDescription.draw(in: CGRect(x: educationDateSize.width + 5, y: 5, width: a4Size.width * (2/3) - educationDateSize.width - 20, height: a4Size.height - 75), withAttributes: TextAttributes.content)
+        context.translateBy(x: 0, y: educationDescriptionSize.height + 5)
+
+        let sideNote = NSLocalizedString("NOTE", bundle: bundle, comment: "Side Note")
+        sideNote.draw(in: CGRect(x: 0, y: 30, width: a4Size.width * (2/3), height: a4Size.height - 75), withAttributes: TextAttributes.content)
 
         context.restoreGState()
     }

@@ -10,6 +10,7 @@ import AppKit
 struct Page2 {
     private var a4Size = CGRect(x: 0, y: 0, width: 8.3 * 72, height: 11.7 * 72)
     private let bundle: Bundle
+    private let appSpacing: CGFloat = 20
 
     init(bundle: Bundle) {
         self.bundle = bundle
@@ -33,16 +34,30 @@ struct Page2 {
                    withAttributes: TextAttributes.whiteSubTitle)
         context.translateBy(x: 0, y: 75)
 
-        _ = drawApp(context, icon: Bundle.module.image(forResource: "kantanmanga"), name: "Kantan Manga", date: "2020", description: NSLocalizedString("KANTANMANGA_DESCRIPTION", bundle: bundle, comment: "Kantan Manga description"), addBorder: true)
+        var offset = drawApp(context, icon: Bundle.module.image(forResource: "app1"), name: "App1", date: "~2015-2016", description: NSLocalizedString("APP1_DESCRIPTION", bundle: bundle, comment: "App 1 description"))
+        context.translateBy(x: 0, y: offset + appSpacing)
+
+        offset = drawApp(context, icon: Bundle.module.image(forResource: "app2"), name: "App2", date: "~2016-2017", description: NSLocalizedString("APP2_DESCRIPTION", bundle: bundle, comment: "App 2 description"))
+        context.translateBy(x: 0, y: offset + appSpacing)
+
+        offset = drawApp(context, icon: Bundle.module.image(forResource: "app3"), name: "App3", date: "~2018", description: NSLocalizedString("APP3_DESCRIPTION", bundle: bundle, comment: "App 3 description"), addBorder: true)
+        context.translateBy(x: 0, y: offset + appSpacing)
+
+        offset = drawApp(context, icon: Bundle.module.image(forResource: "app4"), name: "App4", date: "2020", description: NSLocalizedString("APP4_DESCRIPTION", bundle: bundle, comment: "App 4 description"))
+        context.translateBy(x: 0, y: offset + appSpacing)
+
+        offset = drawApp(context, icon: Bundle.module.image(forResource: "kantanmanga"), name: "Kantan Manga", date: "2020", description: NSLocalizedString("KANTANMANGA_DESCRIPTION", bundle: bundle, comment: "Kantan Manga description"), addBorder: true)
+        context.translateBy(x: 0, y: offset + appSpacing)
 
         context.restoreGState()
     }
 
     private func drawApp(_ context: CGContext, icon: NSImage?, name: String, date: String, description: String, addBorder: Bool = false) -> CGFloat {
         context.saveGState()
+        let icon = icon ?? Bundle.module.image(forResource: "placeholder")
         var verticalPosition: CGFloat = 0
 
-        let clipPath = NSBezierPath(roundedRect: NSRect(x: 15, y: 15, width: 100, height: 100), xRadius: 10, yRadius: 10)
+        let clipPath = NSBezierPath(roundedRect: NSRect(x: 15, y: 15, width: 100, height: 100), xRadius: 15, yRadius: 15)
         clipPath.setClip()
         icon?.draw(in: NSRect(x: 15, y: 15, width: 100, height: 100))
         context.resetClip()
@@ -65,6 +80,6 @@ struct Page2 {
         verticalPosition += descriptionSize.height + 5
 
         context.restoreGState()
-        return verticalPosition
+        return max(verticalPosition, 115)
     }
 }

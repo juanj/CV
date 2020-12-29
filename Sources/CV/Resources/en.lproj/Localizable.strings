@@ -33,4 +33,9 @@ EDUCATION_DESCRIPTION="Self learning is an essential part of me. From the moment
 I'm always learning something new.";
 NOTE="(By tha way, this CV is 100% made using Swift and Core Graphcis, the code can be found at https://github.com/juanj/CV)";
 EXPERIENCE="Experience";
+APP1_DESCRIPTION="An app for reading articles of a magazine. The application shows a Home screen where the most relevant articles of different categories are shown. Also, the user can filter article by category and city. This was our first project, developed using Objectiv-C and Parse (a BaaS owned by Facebook that later on became Open Source)";
+APP2_DESCRIPTION="An app that allows the user to search and reserve parking, giving him the option to pay withing the app. This app was developed using Objective-C, Google Maps and Stripe.";
+APP3_DESCRIPTION="A dating app with a different concept. This was our first Swift app, it used geolocation to show the closest users, a real time chat using SocketIO and handled the complex interactions between users.";
+APP4_DESCRIPTION="An app for finding activities base on the user likes/preferences. The app also shows you which activities are your friends down for. We develop this app using SwiftUI, GraphQL and a combination of the Coordinator/ViewModel patterns. It was a challenging experience, it was the first time we used SwiftUI and GraphQL, but given the chance I would do it again.";
 KANTANMANGA_DESCRIPTION="This is a personal project that I have been working on for a while. This app helps you read \"raw\" (untranslated) manga. It uses Tesseract to perform OCR on the images so it can extract the text, and Mecab to perform a morphological analysis on the text to make it easier to search words on the dictionary. It uses multiple threads to decompress the CBZ(zip of images) files as well as CBR(rar of images) as the user progress through the manga.";
+

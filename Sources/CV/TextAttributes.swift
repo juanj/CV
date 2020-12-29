@@ -56,4 +56,9 @@ struct TextAttributes {
         .foregroundColor: NSColor.lightPurple,
         .font: NSFont.systemFont(ofSize: 11, weight: .bold)
     ]
+
+    static let language: [NSAttributedString.Key: Any] = [
+        .foregroundColor: NSColor.black,
+        .font: NSFont.systemFont(ofSize: 11, weight: .regular)
+    ]
 }

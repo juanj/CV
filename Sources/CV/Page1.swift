@@ -220,13 +220,13 @@ struct Page1 {
         context.saveGState()
         var verticalPosition: CGFloat = 0
 
-        let languageSize = language.size(withAttributes: TextAttributes.sidebarSubTitle)
-        language.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.sidebarSubTitle)
+        let languageSize = language.size(withAttributes: TextAttributes.language)
+        language.draw(at: CGPoint(x: 15, y: verticalPosition + subSectionsSpacing), withAttributes: TextAttributes.language)
         verticalPosition += languageSize.height + subSectionsSpacing
         context.setFillColor(NSColor.lightGray.cgColor)
         let languageBarPath = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: a4Size.width * (1/3) - 30, height: 10), xRadius: 2.5, yRadius: 2.5)
         languageBarPath.fill()
-        context.setFillColor(NSColor.purple.cgColor)
+        context.setFillColor(NSColor.lightPurple.cgColor)
         let languageFillPath = NSBezierPath(roundedRect: NSRect(x: 15, y: verticalPosition + valueSpacing, width: (a4Size.width * (1/3) - 30) * progress, height: 10), xRadius: 2.5, yRadius: 2.5)
         languageFillPath.fill()
         verticalPosition += 10 + valueSpacing

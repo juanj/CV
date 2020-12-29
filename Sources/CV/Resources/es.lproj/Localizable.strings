@@ -33,3 +33,4 @@ EDUCATION_DESCRIPTION="Ser autodidacta es una parte esencial de mí. Desde el mo
 Siempre estoy aprendiendo algo nuevo.";
 NOTE="(Por cierto, esta hoja de vida esta hecha 100% usando Swift y Core Graphics, el codigo se encuentra en https://github.com/juanj/CV)";
 EXPERIENCE="Experiencia";
+KANTANMANGA_DESCRIPTION="Este es un proyecto personal en el que he estado trabajando por un tiempo. Es una aplicación que facilita la lectura de Manga (comic Japonés) en Japonés. Utiliza Tesseract para hacer OCR sobre las imágenes y así extraer el texto, y Mecab para hacer un análisis morfológico al texto obtenido y así poder buscar las palabras en el diccionario más fácilmente. También maneja múltiples hilos para descomprimir los archivos CBZ(zip de imágenes) y CBR(rar de imágenes) a medida que el usuario va leyendo el manga";

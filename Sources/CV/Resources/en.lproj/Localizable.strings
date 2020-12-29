@@ -33,3 +33,4 @@ EDUCATION_DESCRIPTION="Self learning is an essential part of me. From the moment
 I'm always learning something new.";
 NOTE="(By tha way, this CV is 100% made using Swift and Core Graphcis, the code can be found at https://github.com/juanj/CV)";
 EXPERIENCE="Experience";
+KANTANMANGA_DESCRIPTION="This is a personal project that I have been working on for a while. This app helps you read \"raw\" (untranslated) manga. It uses Tesseract to perform OCR on the images so it can extract the text, and Mecab to perform a morphological analysis on the text to make it easier to search words on the dictionary. It uses multiple threads to decompress the CBZ(zip of images) files as well as CBR(rar of images) as the user progress through the manga.";

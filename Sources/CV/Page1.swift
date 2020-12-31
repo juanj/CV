@@ -247,6 +247,8 @@ struct Page1 {
         var valueAttributes: [NSAttributedString.Key: Any] = [:]
         if let link = link {
             valueAttributes[.link] = link
+            valueAttributes[.foregroundColor] = NSColor.blue
+            valueAttributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
         }
         value.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing), withAttributes: valueAttributes)
         verticalPosition += valueSize.height + valueSpacing

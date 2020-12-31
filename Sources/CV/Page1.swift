@@ -130,7 +130,7 @@ struct Page1 {
         verticalPosition += lastHeight
 
         let emailTitle = NSLocalizedString("EMAIL", bundle: bundle, comment: "Email")
-        lastHeight = drawSubSectionValue(context, name: emailTitle, value: "myemailaddress@mail.com")
+        lastHeight = drawSubSectionValue(context, name: emailTitle, value: "myemailaddress@gmail.com", link: "mailto:myemailaddress@gmail.com")
         context.translateBy(x: 0, y: lastHeight)
         verticalPosition += lastHeight
 
@@ -139,7 +139,7 @@ struct Page1 {
         context.translateBy(x: 0, y: lastHeight)
         verticalPosition += lastHeight
 
-        lastHeight = drawSubSectionValue(context, name: "GitHub", value: "https://github.com/juanj")
+        lastHeight = drawSubSectionValue(context, name: "GitHub", value: "https://github.com/juanj", link: "https://github.com/juanj")
         context.translateBy(x: 0, y: lastHeight)
         verticalPosition += lastHeight
 
@@ -235,7 +235,7 @@ struct Page1 {
         return verticalPosition
     }
 
-    private func drawSubSectionValue(_ context: CGContext, name: String, value: String) -> CGFloat {
+    private func drawSubSectionValue(_ context: CGContext, name: String, value: String, link: String? = nil) -> CGFloat {
         context.saveGState()
         var verticalPosition: CGFloat = 0
 
@@ -244,7 +244,11 @@ struct Page1 {
         verticalPosition += nameSize.height + subSectionsSpacing
 
         let valueSize = value.size()
-        value.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing))
+        var valueAttributes: [NSAttributedString.Key: Any] = [:]
+        if let link = link {
+            valueAttributes[.link] = link
+        }
+        value.draw(at: CGPoint(x: 15, y: verticalPosition + valueSpacing), withAttributes: valueAttributes)
         verticalPosition += valueSize.height + valueSpacing
 
         context.restoreGState()

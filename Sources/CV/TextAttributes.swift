@@ -100,7 +100,6 @@ struct TextAttributes {
         for url in urls {
             string.addAttribute(.link, value: url.url, range: url.range)
             string.addAttribute(.foregroundColor, value: NSColor.blue, range: url.range)
-            string.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: url.range)
         }
 
         return string

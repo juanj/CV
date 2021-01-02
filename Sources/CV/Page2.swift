@@ -74,8 +74,9 @@ struct Page2 {
         context.translateBy(x: 0, y: nameSize.height + 15)
         verticalPosition += nameSize.height + 15
 
-        let descriptionSize = description.boundingRect(with: CGSize(width: a4Size.width - 115, height: .greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: TextAttributes.content)
-        description.draw(in: CGRect(x: 0, y: 5, width: a4Size.width - 115, height: a4Size.height - 90), withAttributes: TextAttributes.content)
+        let attributedDescription = TextAttributes.parseLinksIn(description, withAttributes: TextAttributes.content)
+        let descriptionSize = attributedDescription.boundingRect(with: CGSize(width: a4Size.width - 115, height: .greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading])
+        attributedDescription.draw(in: CGRect(x: 0, y: 5, width: a4Size.width - 115, height: a4Size.height - 90))
         context.translateBy(x: 0, y: descriptionSize.height + 5)
         verticalPosition += descriptionSize.height + 5
 

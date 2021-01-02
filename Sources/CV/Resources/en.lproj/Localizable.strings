@@ -31,7 +31,7 @@ EDUCATION_DATE="2013 - Present";
 EDUCATION_NAME="Self taught programmer";
 EDUCATION_DESCRIPTION="Self learning is an essential part of me. From the moment I discovered programming I have been constantly learning new things. Be it how to build a website, how to use the command line, exploring new programming languages or learning about programming patters and unit testing.
 I'm always learning something new.";
-NOTE="(By tha way, this CV is 100% made using Swift and Core Graphcis, the code can be found at https://github.com/juanj/CV)";
+NOTE="(By tha way, this CV is 100% made using Swift and Core Graphcis, the code can be found at (https://github.com/juanj/CV)[https://github.com/juanj/CV])";
 EXPERIENCE="Experience";
 APP1_DESCRIPTION="An app for reading articles of a magazine. The application shows a Home screen where the most relevant articles of different categories are shown. Also, the user can filter article by category and city. This was our first project, developed using Objectiv-C and (Parse)[https://parseplatform.org/] (a BaaS owned by Facebook that later on became Open Source)";
 APP2_DESCRIPTION="An app that allows the user to search and reserve parking, giving him the option to pay withing the app. This app was developed using Objective-C, Google Maps and Stripe.";

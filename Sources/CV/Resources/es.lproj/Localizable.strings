@@ -31,7 +31,7 @@ EDUCATION_DATE="2013 - Precente";
 EDUCATION_NAME="Programador autodidacta";
 EDUCATION_DESCRIPTION="Ser autodidacta es una parte esencial de mí. Desde el momento que descubrí la programación he estado aprendiendo cosas constantemente. Ya sea cómo hacer una página web, cómo usar la línea de comandos, explorar nuevos lenguajes de programación o aprender sobre patrones y tests unitarios.
 Siempre estoy aprendiendo algo nuevo.";
-NOTE="(Por cierto, esta hoja de vida esta hecha 100% usando Swift y Core Graphics, el codigo se encuentra en https://github.com/juanj/CV)";
+NOTE="(Por cierto, esta hoja de vida esta hecha 100% usando Swift y Core Graphics, el codigo se encuentra en (https://github.com/juanj/CV)[https://github.com/juanj/CV])";
 EXPERIENCE="Experiencia";
 APP1_DESCRIPTION="Una aplicación para leer los artículos de una revista. La aplicación presentaba un Home donde mostraba noticias de diferentes categorías, además permitía al usuario filtrar por categoría y ciudad. Este fue nuestro primer proyecto, desarrollado utilizando Objectiv-C y (Parse)[https://parseplatform.org/] (un BaaS que pertenecía a Facebook y eventualmente fue convertido a código abierto)";
 APP2_DESCRIPTION="Una aplicación para buscar parqueaderos. La aplicación permitía al usuario buscar y reservar parqueadero, dándole además la opción de pagar a través de la app La desarrollamos utilizando Objective-C, GoogleMaps y Stripe";

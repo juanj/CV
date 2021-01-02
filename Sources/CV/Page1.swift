@@ -103,8 +103,8 @@ struct Page1 {
         educationDescription.draw(in: CGRect(x: educationDateSize.width + 5, y: 5, width: a4Size.width * (2/3) - educationDateSize.width - 20, height: a4Size.height - 75), withAttributes: TextAttributes.content)
         context.translateBy(x: 0, y: educationDescriptionSize.height + 5)
 
-        let sideNote = NSLocalizedString("NOTE", bundle: bundle, comment: "Side Note")
-        sideNote.draw(in: CGRect(x: 0, y: 30, width: a4Size.width * (2/3), height: a4Size.height - 75), withAttributes: TextAttributes.content)
+        let sideNote =  TextAttributes.parseLinksIn(NSLocalizedString("NOTE", bundle: bundle, comment: "Side Note"), withAttributes: TextAttributes.content)
+        sideNote.draw(in: CGRect(x: 0, y: 30, width: a4Size.width * (2/3), height: a4Size.height - 75))
 
         context.restoreGState()
     }

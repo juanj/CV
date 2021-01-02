@@ -75,9 +75,9 @@ struct Page1 {
         context.setFillColor(NSColor.darkGray.cgColor)
         context.fill(CGRect(x: 15, y: 0, width: titleSize.width, height: 0.5))
 
-        let content = NSLocalizedString("ABOUT", bundle: bundle, comment: "About content")
-        let contentSize = content.boundingRect(with: CGSize(width: a4Size.width * (2/3), height: .greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: TextAttributes.content)
-        content.draw(in: CGRect(x: 0, y: 5, width: a4Size.width * (2/3), height: a4Size.height - 75), withAttributes: TextAttributes.content)
+        let content = TextAttributes.parseLinksIn(NSLocalizedString("ABOUT", bundle: bundle, comment: ""), withAttributes: TextAttributes.content)
+        let contentSize = content.boundingRect(with: CGSize(width: a4Size.width * (2/3), height: .greatestFiniteMagnitude), options: [.usesLineFragmentOrigin, .usesFontLeading])
+        content.draw(in: CGRect(x: 0, y: 5, width: a4Size.width * (2/3), height: a4Size.height - 75))
         context.translateBy(x: 0, y: contentSize.height + 5)
 
         context.translateBy(x: 0, y: 30)

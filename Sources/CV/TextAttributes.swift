@@ -63,7 +63,7 @@ struct TextAttributes {
     ]
 
     static func parseLinksIn(_ text: String, withAttributes attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
-        let pattern = #"\(([^\)]+)\)\[([^\]]+)\]"#
+        let pattern = #"\(([^\)\(]+)\)\[([^\]]+)\]"#
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
             return NSAttributedString(string: text, attributes: attributes)
         }

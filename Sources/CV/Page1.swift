@@ -120,7 +120,7 @@ struct Page1 {
         verticalPosition += lastHeight
 
         let ageTitle = NSLocalizedString("AGE", bundle: bundle, comment: "Age")
-        lastHeight = drawSubSectionValue(context, name: ageTitle, value: "21")
+        lastHeight = drawSubSectionValue(context, name: ageTitle, value: "22")
         context.translateBy(x: 0, y: lastHeight)
         verticalPosition += lastHeight
 

@@ -46,13 +46,13 @@ struct Page2 {
         offset = drawApp(context, icon: Bundle.module.image(forResource: "app4"), name: "App4", date: "2020", description: NSLocalizedString("APP4_DESCRIPTION", bundle: bundle, comment: "App 4 description"))
         context.translateBy(x: 0, y: offset + appSpacing)
 
-        offset = drawApp(context, icon: Bundle.module.image(forResource: "kantanmanga"), name: "Kantan Manga", date: "2020", description: NSLocalizedString("KANTANMANGA_DESCRIPTION", bundle: bundle, comment: "Kantan Manga description"), addBorder: true)
+        offset = drawApp(context, icon: Bundle.module.image(forResource: "kantanmanga"), name: "Kantan Manga", link: "https://github.com/juanj/KantanManga", date: "2020", description: NSLocalizedString("KANTANMANGA_DESCRIPTION", bundle: bundle, comment: "Kantan Manga description"), addBorder: true)
         context.translateBy(x: 0, y: offset + appSpacing)
 
         context.restoreGState()
     }
 
-    private func drawApp(_ context: CGContext, icon: NSImage?, name: String, date: String, description: String, addBorder: Bool = false) -> CGFloat {
+    private func drawApp(_ context: CGContext, icon: NSImage?, name: String, link: String? = nil, date: String, description: String, addBorder: Bool = false) -> CGFloat {
         context.saveGState()
         let icon = icon ?? Bundle.module.image(forResource: "placeholder")
         var verticalPosition: CGFloat = 0
@@ -68,8 +68,14 @@ struct Page2 {
         }
         context.translateBy(x: 115, y: 0)
 
-        let nameSize = name.size(withAttributes: TextAttributes.educationName)
-        name.draw(at: CGPoint(x: 15, y: 15), withAttributes: TextAttributes.educationName)
+        let nameAttributes: [NSAttributedString.Key: Any]
+        if let link = link {
+            nameAttributes = TextAttributes.attributes(TextAttributes.educationName, with: link)
+        } else {
+            nameAttributes = TextAttributes.educationName
+        }
+        let nameSize = name.size(withAttributes: nameAttributes)
+        name.draw(at: CGPoint(x: 15, y: 15), withAttributes: nameAttributes)
         date.draw(at: CGPoint(x: 25 + nameSize.width, y: 18), withAttributes: TextAttributes.educationDate)
         context.translateBy(x: 0, y: nameSize.height + 15)
         verticalPosition += nameSize.height + 15

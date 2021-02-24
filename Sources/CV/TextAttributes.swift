@@ -104,4 +104,11 @@ struct TextAttributes {
 
         return string
     }
+
+    static func attributes(_ attributes: [NSAttributedString.Key: Any], with link: String) -> [NSAttributedString.Key: Any] {
+        var attributes = attributes
+        attributes[.link] = link
+        attributes[.foregroundColor] = NSColor.blue
+        return attributes
+    }
 }
